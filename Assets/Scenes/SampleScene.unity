@@ -179,7 +179,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1381317469
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 0.7334804, b: 0, a: 1}
@@ -440,7 +440,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -464,7 +464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08249758, y: -2.32, z: -10}
+  m_LocalPosition: {x: 0.01520133, y: 2.3730955, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -511,6 +511,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1412202232351432284, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 40e6074b7111a7c49849b3796eb7263f, type: 3}
+    - target: {fileID: 1412202232351432284, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3282420357907101188, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -565,11 +573,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
---- !u!4 &699453009 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4318487275682065665, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
-  m_PrefabInstance: {fileID: 1110454669}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705446666
 GameObject:
   m_ObjectHideFlags: 3
@@ -709,6 +712,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1902331812114216788, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6232c254bd1aa144c8eaf79299e991d6, type: 3}
+    - target: {fileID: 1902331812114216788, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4318487275682065665, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -847,6 +858,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1543881405 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3282420357907101188, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
+  m_PrefabInstance: {fileID: 613546380}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1553810905
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,10 +981,10 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 699453009}
+  m_Follow: {fileID: 1543881405}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 7
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -989,7 +1005,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649835747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08249758, y: -2.32, z: -10}
+  m_LocalPosition: {x: 0.01520133, y: 2.3730955, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 705446667}
