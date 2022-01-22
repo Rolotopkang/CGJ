@@ -89,20 +89,20 @@ public class playerController : MonoBehaviour
             JumpTimes--;
             jumpPresseed = false;
         }
-        else if (jumpPresseed && JumpTimes > 0 && isJump)
-        {
-            // jumping.Play();
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpstrenth * Time.fixedDeltaTime);
-            JumpTimes--;
-            jumpPresseed = false;
-        }
-        else if (jumpPresseed && JumpTimes > 0 && !isGround && rb2d.velocity.y < 0)
-        {
-            // jumping.Play();
-            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpstrenth * Time.fixedDeltaTime);
-            JumpTimes--;
-            jumpPresseed = false;
-        }
+        // else if (jumpPresseed && JumpTimes > 0 && isJump)
+        // {
+        //     // jumping.Play();
+        //     rb2d.velocity = new Vector2(rb2d.velocity.x, jumpstrenth * Time.fixedDeltaTime);
+        //     JumpTimes--;
+        //     jumpPresseed = false;
+        // }
+        // else if (jumpPresseed && JumpTimes > 0 && !isGround && rb2d.velocity.y < 0)
+        // {
+        //     // jumping.Play();
+        //     rb2d.velocity = new Vector2(rb2d.velocity.x, jumpstrenth * Time.fixedDeltaTime);
+        //     JumpTimes--;
+        //     jumpPresseed = false;
+        // }
         
         //改变人物朝向
         if (rb2d.velocity.x < 0)
@@ -151,7 +151,7 @@ public class playerController : MonoBehaviour
     }
 
     private void Keydown() {
-        if (Input.GetButtonDown("Jump") && JumpTimes > 0) {
+        if (Input.GetButtonDown("Jump") && JumpTimes > 0 && isCurrentPlayer) {
             jumpPresseed = true;
         }
     }

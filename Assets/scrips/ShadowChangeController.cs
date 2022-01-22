@@ -10,6 +10,7 @@ public class ShadowChangeController : MonoBehaviour {
     public GameObject Shadow;
     public GameObject changeButton;
     public CinemachineVirtualCamera cm;
+    public GameObject ShadowGlobalLight;
 
     [SerializeField] private bool isShadow =false;
 
@@ -45,9 +46,7 @@ public class ShadowChangeController : MonoBehaviour {
     }
 
     public void ChangeCharactor() {
-        Debug.Log("buttondown");
         if (!isShadow) {
-            Debug.Log("toshadow");
             PlayerController.isCurrentPlayer = false;
             ShadowController.isCurrentPlayer = true;
             ShadowController.isInputTurn = true;
@@ -55,10 +54,10 @@ public class ShadowChangeController : MonoBehaviour {
             Player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
             cm.Follow = Shadow.transform;
             cm.m_Lens.Dutch = Mathf.Lerp(0,180,Time.time*3);
+            ShadowGlobalLight.SetActive(true);
         } 
         else 
         {
-            Debug.Log("toPlayer");
             PlayerController.isCurrentPlayer = true;
             ShadowController.isCurrentPlayer = true;
             ShadowController.isInputTurn = false;
@@ -70,6 +69,7 @@ public class ShadowChangeController : MonoBehaviour {
                 Shadow.transform.position.z);
             cm.Follow = Player.transform;
             cm.m_Lens.Dutch = Mathf.Lerp(180,0,Time.time*3);
+            ShadowGlobalLight.SetActive(false);
         }
     }
 }
