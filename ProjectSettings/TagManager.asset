@@ -43,12 +43,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: player
-    uniqueID: 675658519
+  - name: BlackImage
+    uniqueID: 4165023441
+    locked: 0
+  - name: Effections
+    uniqueID: 535420603
+    locked: 0
+  - name: Placement
+    uniqueID: 2013784551
     locked: 0
   - name: shadow
     uniqueID: 1931899861
     locked: 0
   - name: ground
     uniqueID: 2913649827
+    locked: 0
+  - name: player
+    uniqueID: 675658519
     locked: 0
