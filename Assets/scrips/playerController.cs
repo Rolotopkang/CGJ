@@ -21,6 +21,9 @@ public class playerController : MonoBehaviour
     public float speed;
     public float jumpstrenth;
     public int MaxJumpTimes;
+    public bool isShadow;
+    public bool isCurrentPlayer;
+    public bool isFollow;
 
     //定位辅助
     [Header("环境检测")] 
@@ -47,7 +50,10 @@ public class playerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement();
+        if (isCurrentPlayer)
+        {
+            Movement();
+        }
         SwitchAnim();
     }
 
@@ -58,13 +64,28 @@ public class playerController : MonoBehaviour
         //人物左右移动
         rb2d.velocity = new Vector2(speed * horizontalMove * Time.fixedDeltaTime, rb2d.velocity.y);
         //改变人物朝向
+        
         if (rb2d.velocity.x < 0)
         {
-            sprd.flipX = false;
+            if (isShadow)
+            {
+                sprd.flipX = true;
+            }
+            else
+            {
+                sprd.flipX = false;
+            }
         }
         else if(rb2d.velocity.x > 0)
         {
-            sprd.flipX = true;
+            if (isShadow)
+            {
+                sprd.flipX = false;
+            }
+            else
+            {
+                sprd.flipX = true;
+            }
         }
     }
     
