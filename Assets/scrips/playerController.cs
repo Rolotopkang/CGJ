@@ -23,6 +23,7 @@ public class playerController : MonoBehaviour
     public int MaxJumpTimes;
     public bool isShadow;
     public bool isCurrentPlayer;
+    public bool isInputTurn =false;
     public bool isFollow;
 
     //定位辅助
@@ -30,7 +31,6 @@ public class playerController : MonoBehaviour
     public float footOffset = 0.4f;
     public float headClearance = 0.5f;
     public float groundDistance = 1.2f;
-    
     public LayerMask ground;
 
     //组件
@@ -62,6 +62,9 @@ public class playerController : MonoBehaviour
         float horizontalMove = Input.GetAxisRaw("Horizontal");
         float jumpMove = Input.GetAxis("Jump");
         //人物左右移动
+        if (isInputTurn) {
+            horizontalMove = -horizontalMove;
+        }
         rb2d.velocity = new Vector2(speed * horizontalMove * Time.fixedDeltaTime, rb2d.velocity.y);
         //改变人物朝向
         
