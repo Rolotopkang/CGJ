@@ -1,14 +1,28 @@
+using System;
 /// <summary>
-/// ¶¨Òå¿É³ÖÓĞÎïÆ·¡£
+/// å®šä¹‰å¯æŒæœ‰ç‰©å“ã€‚
 /// </summary>
-public class HeldItem
-{
+/// <author>LviatYi</author>
+[Flags]
+public enum HeldItem {
     /// <summary>
-    /// ÎïÆ·Ãû¡£
+    /// æ­¦å™¨ 1
     /// </summary>
-    string name;
+    Weapon1 = 1,
     /// <summary>
-    /// ÃèÊö¡£
+    /// æ­¦å™¨ 2
     /// </summary>
-    string description;
+    Weapon2 = 2,
+    /// <summary>
+    /// é£Ÿç‰©
+    /// </summary>
+    Food = 4,
+    /// <summary>
+    /// çŸ³å¤´
+    /// </summary>
+    Stone = 8,
+    /// <summary>
+    /// åºŠå•åšçš„ç»³å­
+    /// </summary>
+    SheetRope = 16,
 }
