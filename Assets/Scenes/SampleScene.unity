@@ -806,8 +806,32 @@ PrefabInstance:
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6725024061780335554, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
+      propertyPath: footOffset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725024061780335554, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
+      propertyPath: jumpstrenth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725024061780335554, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
+      propertyPath: MaxJumpTimes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725024061780335554, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
+      propertyPath: ground.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725024061780335554, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
+      propertyPath: groundDistance
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725024061780335554, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
       propertyPath: isCurrentPlayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725024061780335554, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
+      propertyPath: playerJumpStrenth
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8761026550794776986, guid: 8df1929cc046ab8488c3ca5098e9799e, type: 3}
       propertyPath: m_Name
@@ -1287,8 +1311,36 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7683726266778194613, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
+      propertyPath: footOffset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683726266778194613, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
+      propertyPath: jumpstrenth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683726266778194613, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
+      propertyPath: MaxJumpTimes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683726266778194613, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
+      propertyPath: ground.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683726266778194613, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
+      propertyPath: groundDistance
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683726266778194613, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
       propertyPath: isCurrentPlayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683726266778194613, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
+      propertyPath: playerJumpStrenth
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7683726266778194613, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
+      propertyPath: shadowJumpStrenth
+      value: -400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad6dc94d50c78684a91a406412d7dfb4, type: 3}
