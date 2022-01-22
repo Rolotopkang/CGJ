@@ -20,11 +20,12 @@ public class playerController : MonoBehaviour
     [Header("可调整参数")] 
     public float speed;
     public float jumpstrenth;
+    public float shadowJumpStrenth;
+    public float playerJumpStrenth;
     public int MaxJumpTimes;
     public bool isShadow;
     public bool isCurrentPlayer;
     public bool isInputTurn =false;
-    public bool isFollow;
 
     //定位辅助
     [Header("环境检测")] 
@@ -40,8 +41,8 @@ public class playerController : MonoBehaviour
     private Animator anim;
     private CapsuleCollider2D CapCl2d;
 
-    private void Awake()
-    {
+    private void Awake() {
+        jumpstrenth = playerJumpStrenth;
         sprd = GetComponent<SpriteRenderer>();
         rb2d = GetComponent<Rigidbody2D>();
         CapCl2d = GetComponent<CapsuleCollider2D>();
@@ -53,8 +54,14 @@ public class playerController : MonoBehaviour
         if (isCurrentPlayer)
         {
             Movement();
+            PhysicsCheck();
         }
         SwitchAnim();
+    }
+
+    private void Update() {
+        Keydown();
+        ChangeShadowAttribute();
     }
 
     private void Movement()
@@ -66,8 +73,38 @@ public class playerController : MonoBehaviour
             horizontalMove = -horizontalMove;
         }
         rb2d.velocity = new Vector2(speed * horizontalMove * Time.fixedDeltaTime, rb2d.velocity.y);
-        //改变人物朝向
         
+        if (isGround)
+        {
+            JumpTimes = MaxJumpTimes;
+            isJump = false;
+            anim.SetBool("jumping",false);
+        }
+
+        if (jumpPresseed && isGround)
+        {
+            isJump = true;
+            // jumping.Play();
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpstrenth * Time.fixedDeltaTime);
+            JumpTimes--;
+            jumpPresseed = false;
+        }
+        else if (jumpPresseed && JumpTimes > 0 && isJump)
+        {
+            // jumping.Play();
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpstrenth * Time.fixedDeltaTime);
+            JumpTimes--;
+            jumpPresseed = false;
+        }
+        else if (jumpPresseed && JumpTimes > 0 && !isGround && rb2d.velocity.y < 0)
+        {
+            // jumping.Play();
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpstrenth * Time.fixedDeltaTime);
+            JumpTimes--;
+            jumpPresseed = false;
+        }
+        
+        //改变人物朝向
         if (rb2d.velocity.x < 0)
         {
             if (isShadow)
@@ -92,22 +129,79 @@ public class playerController : MonoBehaviour
         }
     }
     
+    void PhysicsCheck()
+    {
+        RaycastHit2D leftcheck = Raycast(new Vector2(-footOffset, 0f),
+            Vector2.down, groundDistance, ground);
+        RaycastHit2D rightcheck = Raycast(new Vector2(footOffset, 0f),
+            Vector2.down, groundDistance, ground);
+        if (leftcheck || rightcheck)
+            isGround = true;
+        else
+            isGround = false;
+    }
+    
+    RaycastHit2D Raycast(Vector2 offset, Vector2 rayDiraction, float length, LayerMask layer)
+    {
+        Vector2 pos = transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(pos + offset, rayDiraction, length, layer);
+        Color color = hit ? Color.green : Color.red;
+        Debug.DrawRay(pos+offset,rayDiraction*length,color);
+        return hit;
+    }
+
+    private void Keydown() {
+        if (Input.GetButtonDown("Jump") && JumpTimes > 0) {
+            jumpPresseed = true;
+        }
+    }
+
+    private void ChangeShadowAttribute() {
+        if (isShadow && isInputTurn) {
+            jumpstrenth = shadowJumpStrenth;
+        } else {
+            jumpstrenth = playerJumpStrenth;
+        }
+    }
+    
     private void SwitchAnim()
     {
         anim.SetFloat("running", Mathf.Abs(rb2d.velocity.x));
-        // if (isGround)
-        // {
-        //     anim.SetBool("falling", false);
-        // }
-        // else if (!isGround && rb2d.velocity.y >= 0)
-        // {
-        //     anim.SetBool("jumping", true);
-        //     anim.SetBool("falling", false);
-        // }
-        // else if (!isGround && rb2d.velocity.y < 0)
-        // {
-        //     anim.SetBool("jumping", false);
-        //     anim.SetBool("falling", true);
-        // }
+
+        if (isShadow) 
+        {
+            if (isGround)
+            {
+                anim.SetBool("falling", false);
+            }
+            else if (!isGround && rb2d.velocity.y <= 0)
+            {
+                anim.SetBool("jumping", true);
+                anim.SetBool("falling", false);
+            }
+            else if (!isGround && rb2d.velocity.y > 0)
+            {
+                anim.SetBool("jumping", false);
+                anim.SetBool("falling", true);
+            }
+        }
+        else
+        {
+            if (isGround)
+            {
+                anim.SetBool("falling", false);
+            }
+            else if (!isGround && rb2d.velocity.y >= 0)
+            {
+                anim.SetBool("jumping", true);
+                anim.SetBool("falling", false);
+            }
+            else if (!isGround && rb2d.velocity.y < 0)
+            {
+                anim.SetBool("jumping", false);
+                anim.SetBool("falling", true);
+            }
+        }
+        
     }
 }

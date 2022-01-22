@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 675658519
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 72bc1a82450738e41bea1a59a596ed6a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40e6074b7111a7c49849b3796eb7263f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,6 +146,10 @@ MonoBehaviour:
   speed: 100
   jumpstrenth: 0
   MaxJumpTimes: 0
+  isShadow: 0
+  isCurrentPlayer: 0
+  isInputTurn: 0
+  isFollow: 0
   footOffset: 0.4
   headClearance: 0.5
   groundDistance: 1.2
