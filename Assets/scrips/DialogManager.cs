@@ -109,6 +109,11 @@ public class DialogManager : MonoBehaviour {
 
     /// <summary>
     /// 从指定文件导入。
+    /// 导入语句格式必须符合：
+    /// [章节数][语句序号]\t[Text]
+    /// 每行语句使用换行符分隔。
+    /// 
+    /// TextAsset 必须使用 UTF-8 编码。
     /// </summary>
     private void LoadFile() {
         List<string> chapters = new List<string>(loadAsset.text.Split('\n'));
