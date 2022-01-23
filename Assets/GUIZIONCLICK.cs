@@ -16,8 +16,7 @@ public class GUIZIONCLICK : ObjectOnClick
     
     
     private void OnMouseDown() {
-        // BagManager.isHaveItem(HeldItem.Fuzi) && 
-        if (!isOpen) {
+        if (BagManager.IsHaveItem(HeldItem.Fuzi) && !isOpen) {
             isOpen = true;
             Sprite sp = Sprite.Create(Texture2D,SpriteRenderer.sprite.textureRect,new Vector2(0.5f,0.5f));
             SpriteRenderer.sprite = sp;
@@ -26,7 +25,6 @@ public class GUIZIONCLICK : ObjectOnClick
                 BagManager.AddItemToBag(HeldItem);
                 BagManager.AddItemToBag(HeldItem2);
             }
-            DialogManager.OpenDialog(chapter,phrase);
         }
     }
 }

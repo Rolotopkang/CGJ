@@ -20,9 +20,9 @@ public class Tshirt : ObjectOnClick
         if (ShadowChangeController.isShadow) {
             Sprite sp = Sprite.Create(Texture2D,SpriteRenderer.sprite.textureRect,new Vector2(0.5f,0.5f));
             SpriteRenderer.sprite = sp;
-            // if (addItem) {
-            //     BagManager.addItemToBag(HeldItem);
-            // }
+            if (addItem) {
+                BagManager.AddItemToBag(HeldItem);
+            }
             // DialogManager.OpenDialog(shadowChapter,shadowPhrase);
         } else {
             DialogManager.OpenDialog(chapter,phrase);
