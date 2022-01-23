@@ -39,7 +39,7 @@ public class DialogManager : MonoBehaviour {
     }
 
     public void Update() {
-        if (Input.GetKeyUp(" ") && this.DialogTexture.enabled) {
+        if (Input.GetKeyUp(KeyCode.Space) && this.DialogTexture.enabled) {
             NextPhrase();
         }
     }
