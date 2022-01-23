@@ -3,17 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour {
-
-    public static SoundManager instance;
-    
+public class SoundManager : MonoBehaviour {    
     [SerializeField]
     private AudioSource audioSource;
     [SerializeField]
     private  List<AudioClip> audioClips;
 
     private void Awake() {
-        instance = this;
     }
 
     public void OpenUI() {
@@ -24,6 +20,5 @@ public class SoundManager : MonoBehaviour {
     public void CloseUI() {
         audioSource.clip = audioClips[1];
         audioSource.Play();
-    }
-    
+    }       
 }
