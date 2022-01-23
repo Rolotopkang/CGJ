@@ -38,6 +38,12 @@ public class DialogManager : MonoBehaviour {
         LoadFile();
     }
 
+    public void Update() {
+        if (Input.GetKeyUp(" ") && this.DialogTexture.enabled) {
+            NextPhrase();
+        }
+    }
+
 
     /// <summary>
     /// 打开对话框。
