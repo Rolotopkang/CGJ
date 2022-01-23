@@ -20,6 +20,9 @@ public class DialogManager : MonoBehaviour {
     [SerializeField]
     private TextAsset loadAsset;
 
+    private int tick = 0;
+    private int survivalTime = 600;
+
     /// <summary>
     /// 台词表
     /// </summary>
@@ -40,13 +43,15 @@ public class DialogManager : MonoBehaviour {
     }
 
     public void Update() {
-        if (Input.GetKeyUp(KeyCode.Space) && this.DialogTexture.enabled) {
+        if (tick++ >= survivalTime) {
+            tick = 0;
+            NextPhrase();
+        } else if (Input.GetKeyUp(KeyCode.Space) && this.DialogTexture.enabled) {
             NextPhrase();
         } else if (Input.GetMouseButtonDown(1) && this.DialogTexture.enabled) {
             NextPhrase();
         }
     }
-
 
     /// <summary>
     /// 打开对话框。
