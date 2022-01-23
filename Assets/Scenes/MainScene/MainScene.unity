@@ -1334,8 +1334,8 @@ MonoBehaviour:
   DialogManager: {fileID: 182898566}
   HeldItem: 0
   addItem: 0
-  chapter: 0
-  phrase: 0
+  chapter: 1
+  phrase: 1
 --- !u!114 &507476065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3456,6 +3456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LightEffect: {fileID: 2118537985}
+  isOn: 0
 --- !u!60 &1513460993
 PolygonCollider2D:
   m_ObjectHideFlags: 0

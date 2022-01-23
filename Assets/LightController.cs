@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LightController : ObjectOnClick {
     public GameObject LightEffect;
+    [SerializeField]
     private bool isOn = false;
     
     private void OnMouseDown() {

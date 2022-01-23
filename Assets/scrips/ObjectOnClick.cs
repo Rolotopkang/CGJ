@@ -16,11 +16,13 @@ public class ObjectOnClick : MonoBehaviour{
     }
 
     protected void OnMouseEnter() {
+        Debug.Log("in");
         SpriteRenderer.material.SetFloat("_IsOutLine",1);
         SpriteRenderer.sortingLayerName = "HighLight";
     }
 
     protected void OnMouseExit() {
+        Debug.Log("out");
         SpriteRenderer.material.SetFloat("_IsOutLine",0);
         SpriteRenderer.sortingLayerName = defaltLayer;
     }
