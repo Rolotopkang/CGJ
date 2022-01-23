@@ -64,3 +64,6 @@ TagManager:
   - name: player
     uniqueID: 675658519
     locked: 0
+  - name: lit
+    uniqueID: 2535147311
+    locked: 0
