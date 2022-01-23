@@ -35,11 +35,14 @@ public class DialogManager : MonoBehaviour {
     private int phrase;
 
     public void Start() {
+        CloseDialog();
         LoadFile();
     }
 
     public void Update() {
         if (Input.GetKeyUp(KeyCode.Space) && this.DialogTexture.enabled) {
+            NextPhrase();
+        } else if (Input.GetMouseButtonDown(1) && this.DialogTexture.enabled) {
             NextPhrase();
         }
     }
