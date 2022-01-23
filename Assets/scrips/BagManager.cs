@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Bag Manager 类。
@@ -9,11 +12,37 @@ using UnityEngine;
 public class BagManager : MonoBehaviour {
     HeldItem heldItems;
 
+    [Header("Ui")]
+    [SerializeField]
+    GameObject bagUi;
+
+    List<Image> images;
+
+    private void Start() {
+        images = new List<Image>(bagUi.GetComponentsInChildren<Image>());
+    }
+
+    private void Update() {
+        int i = 0;
+        foreach (HeldItem item in Enum.GetValues(typeof(HeldItem))) {
+            if (i >= images.Count) {
+                continue;
+            }
+
+            if (IsHaveItem(item)) {
+                images[i].enabled = true;
+            } else {
+                images[i].enabled = false;
+            }
+            i++;
+        }
+    }
+
     /// <summary>
     /// 向背包中增加物品。
     /// </summary>
     /// <param name="item">待添加的物品</param>
-    public void addItemToBag(HeldItem item) {
+    public void AddItemToBag(HeldItem item) {
         this.heldItems |= item;
     }
 
@@ -21,7 +50,7 @@ public class BagManager : MonoBehaviour {
     /// 从背包中删除物品。
     /// </summary>
     /// <param name="item">待删除的物品</param>
-    public void dropItemFromBag(HeldItem item) {
+    public void DropItemFromBag(HeldItem item) {
         this.heldItems ^= item;
     }
 
@@ -29,7 +58,7 @@ public class BagManager : MonoBehaviour {
     /// 获取背包中包含的物品。
     /// </summary>
     /// <returns></returns>
-    public HeldItem getHeldItems() {
+    public HeldItem GetHeldItems() {
         return this.heldItems;
     }
 
@@ -38,7 +67,7 @@ public class BagManager : MonoBehaviour {
     /// </summary>
     /// <param name="item">指定的物品</param>
     /// <returns></returns>
-    public bool isHaveItem(HeldItem item) {
+    public bool IsHaveItem(HeldItem item) {
         return this.heldItems.HasFlag(item);
     }
 }
