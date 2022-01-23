@@ -8,7 +8,6 @@ public class ShadowChangeController : MonoBehaviour {
     
     public GameObject Player;
     public GameObject Shadow;
-    public GameObject changeButton;
     public CinemachineVirtualCamera cm;
     public GameObject ShadowGlobalLight;
 
@@ -22,6 +21,11 @@ public class ShadowChangeController : MonoBehaviour {
         ShadowController = Shadow.GetComponent<playerController>();
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            ChangeCharactor();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D actor) {
         if (actor.gameObject.tag.Equals("player") && 
@@ -33,7 +37,6 @@ public class ShadowChangeController : MonoBehaviour {
                 Shadow.transform.position.z);
             Shadow.GetComponent<playerController>().isCurrentPlayer = true;
         }
-        changeButton.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D actor) {
@@ -42,7 +45,6 @@ public class ShadowChangeController : MonoBehaviour {
             Shadow.GetComponent<playerController>().isCurrentPlayer = false;
             Shadow.gameObject.SetActive(false);
         }
-        changeButton.SetActive(false);
     }
 
     public void ChangeCharactor() {
