@@ -8,11 +8,11 @@ public class ShadowChangeController : MonoBehaviour {
     
     public GameObject Player;
     public GameObject Shadow;
-    public GameObject changeButton;
     public CinemachineVirtualCamera cm;
     public GameObject ShadowGlobalLight;
-
-    [SerializeField] private bool isShadow =false;
+    public GameObject ShadowLight;
+    public bool isShadow =false;
+    [SerializeField] private bool playerIn;
 
     private playerController PlayerController;
     private playerController ShadowController;
@@ -22,10 +22,16 @@ public class ShadowChangeController : MonoBehaviour {
         ShadowController = Shadow.GetComponent<playerController>();
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.S)&& playerIn) {
+            ChangeCharactor();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D actor) {
         if (actor.gameObject.tag.Equals("player") && 
             actor.gameObject.GetComponent<playerController>().isCurrentPlayer) {
+            playerIn = true;
             Shadow.gameObject.SetActive(true);
             Shadow.transform.localPosition = new Vector3(
                 actor.gameObject.transform.position.x,
@@ -33,16 +39,25 @@ public class ShadowChangeController : MonoBehaviour {
                 Shadow.transform.position.z);
             Shadow.GetComponent<playerController>().isCurrentPlayer = true;
         }
-        changeButton.SetActive(true);
+
+        if (actor.gameObject.tag.Equals("shadow") &&
+            actor.gameObject.GetComponent<playerController>().isCurrentPlayer) {
+            playerIn = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D actor) {
         if (actor.gameObject.tag.Equals("player")&& 
             actor.gameObject.GetComponent<playerController>().isCurrentPlayer) {
+            playerIn = false;
             Shadow.GetComponent<playerController>().isCurrentPlayer = false;
             Shadow.gameObject.SetActive(false);
         }
-        changeButton.SetActive(false);
+
+        if (actor.gameObject.tag.Equals("shadow") &&
+            actor.gameObject.GetComponent<playerController>().isCurrentPlayer) {
+            playerIn = false;
+        }
     }
 
     public void ChangeCharactor() {
@@ -55,6 +70,7 @@ public class ShadowChangeController : MonoBehaviour {
             cm.Follow = Shadow.transform;
             cm.m_Lens.Dutch = Mathf.Lerp(0,180,Time.time*3);
             ShadowGlobalLight.SetActive(true);
+            ShadowLight.SetActive(true);
         } 
         else 
         {
@@ -70,6 +86,7 @@ public class ShadowChangeController : MonoBehaviour {
             cm.Follow = Player.transform;
             cm.m_Lens.Dutch = Mathf.Lerp(180,0,Time.time*3);
             ShadowGlobalLight.SetActive(false);
+            ShadowLight.SetActive(false);
         }
     }
 }
