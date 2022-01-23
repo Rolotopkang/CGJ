@@ -8,11 +8,11 @@ public enum HeldItem {
     /// <summary>
     /// 武器 1
     /// </summary>
-    Weapon1 = 1,
+    Gaozi = 1,
     /// <summary>
     /// 武器 2
     /// </summary>
-    Weapon2 = 2,
+    Fuzi = 2,
     /// <summary>
     /// 食物
     /// </summary>

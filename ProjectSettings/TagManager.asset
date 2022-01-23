@@ -49,6 +49,9 @@ TagManager:
   - name: Effections
     uniqueID: 535420603
     locked: 0
+  - name: HighLight
+    uniqueID: 1020314621
+    locked: 0
   - name: Placement
     uniqueID: 2013784551
     locked: 0
@@ -60,4 +63,7 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 675658519
+    locked: 0
+  - name: lit
+    uniqueID: 2535147311
     locked: 0
