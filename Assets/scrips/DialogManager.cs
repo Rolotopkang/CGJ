@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,10 +16,14 @@ public class DialogManager : MonoBehaviour {
     [SerializeField]
     private GameObject backgroundMask;
 
+    [Header("Extra Resource")]
+    [SerializeField]
+    private TextAsset loadAsset;
+
     /// <summary>
     /// 台词表
     /// </summary>
-    private List<List<string>> texts;
+    private List<List<string>> texts = new List<List<string>>();
 
     /// <summary>
     /// 章节数
@@ -28,6 +33,10 @@ public class DialogManager : MonoBehaviour {
     /// 语句序号
     /// </summary>
     private int phrase;
+
+    public void Start() {
+        LoadFile();
+    }
 
 
     /// <summary>
@@ -95,6 +104,53 @@ public class DialogManager : MonoBehaviour {
             SetText(texts[this.chapter][this.phrase]);
         } else {
             CloseDialog();
+        }
+    }
+
+    /// <summary>
+    /// 从指定文件导入。
+    /// 导入语句格式必须符合：
+    /// [章节数][语句序号]\t[Text]
+    /// 每行语句使用换行符分隔。
+    /// 
+    /// TextAsset 必须使用 UTF-8 编码。
+    /// </summary>
+    private void LoadFile() {
+        List<string> chapters = new List<string>(loadAsset.text.Split('\n'));
+
+        foreach (string sentence in chapters) {
+            if (sentence.Trim().Equals(String.Empty)) {
+                continue;
+            }
+            string cpCountPre = sentence.Split('\t')[0];
+
+            try {
+                int chapter = Convert.ToInt32(cpCountPre.Split('.')[0]);
+                int phrase = Convert.ToInt32(cpCountPre.Split('.')[1]);
+
+                if (this.texts.Count < chapter) {
+                    for (int i = this.texts.Count; i < chapter; i++) {
+                        this.texts.Add(new List<string>());
+
+                        this.texts[i] = new List<string>();
+                    }
+                }
+                if (this.texts[chapter - 1].Count < phrase) {
+                    for (int i = this.texts[chapter - 1].Count; i < phrase; i++) {
+                        this.texts[chapter - 1].Add(String.Empty);
+                    }
+                }
+                this.texts[chapter - 1][phrase - 1] = sentence.Split('\t')[1];
+            } catch (Exception) {
+                continue;
+            }
+        }
+
+
+        foreach (List<string> item in this.texts) {
+            foreach (string text in item) {
+                print(text);
+            }
         }
     }
 }
