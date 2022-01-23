@@ -23,8 +23,8 @@ public class GUIZIONCLICK : ObjectOnClick
             SpriteRenderer.sprite = sp;
         }else if (isOpen) {
             if (addItem) {
-                BagManager.addItemToBag(HeldItem);
-                BagManager.addItemToBag(HeldItem2);
+                BagManager.AddItemToBag(HeldItem);
+                BagManager.AddItemToBag(HeldItem2);
             }
             DialogManager.OpenDialog(chapter,phrase);
         }

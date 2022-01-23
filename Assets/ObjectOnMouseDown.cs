@@ -13,7 +13,7 @@ public class ObjectOnMouseDown : ObjectOnClick {
     
     private void OnMouseDown() {
         if (addItem) {
-            BagManager.addItemToBag(HeldItem);
+            BagManager.AddItemToBag(HeldItem);
         }
         DialogManager.OpenDialog(chapter,phrase);
     }
