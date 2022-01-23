@@ -6,6 +6,7 @@ TagManager:
   tags:
   - player
   - shadow
+  - stone
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Water
   - UI
   - ground
-  - 
-  - 
+  - player
+  - stone
   - 
   - 
   - 
@@ -48,6 +49,9 @@ TagManager:
     locked: 0
   - name: Effections
     uniqueID: 535420603
+    locked: 0
+  - name: pipe
+    uniqueID: 1070391849
     locked: 0
   - name: HighLight
     uniqueID: 1020314621

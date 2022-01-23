@@ -10,7 +10,6 @@ public class ShadowChangeController : MonoBehaviour {
     public GameObject Shadow;
     public CinemachineVirtualCamera cm;
     public GameObject ShadowGlobalLight;
-    public GameObject ShadowLight;
     public bool isShadow =false;
     [SerializeField] private bool playerIn;
 
@@ -70,7 +69,6 @@ public class ShadowChangeController : MonoBehaviour {
             cm.Follow = Shadow.transform;
             cm.m_Lens.Dutch = Mathf.Lerp(0,180,Time.time*3);
             ShadowGlobalLight.SetActive(true);
-            ShadowLight.SetActive(true);
         } 
         else 
         {
@@ -86,7 +84,6 @@ public class ShadowChangeController : MonoBehaviour {
             cm.Follow = Player.transform;
             cm.m_Lens.Dutch = Mathf.Lerp(180,0,Time.time*3);
             ShadowGlobalLight.SetActive(false);
-            ShadowLight.SetActive(false);
         }
     }
 }

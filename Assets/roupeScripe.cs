@@ -1,23 +1,20 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stoneScript : ObjectOnClick
+public class roupeScripe : ObjectOnClick
 {
     public BagManager BagManager;
     public DialogManager DialogManager;
-    public int chapter;
-    public int phrase;
     public ShadowChangeController ShadowChangeController;
-    public GameObject littlestone;
 
     private void OnMouseDown() {
-        if (ShadowChangeController.isShadow && BagManager.IsHaveItem(HeldItem.Gaozi)) {
-            littlestone.SetActive(true);
+        if (!ShadowChangeController.isShadow) {
+            BagManager.AddItemToBag(HeldItem.SheetRope);
             gameObject.SetActive(false);
+            DialogManager.OpenDialog(11,2);
         } else {
-            DialogManager.OpenDialog(chapter,phrase);
+            DialogManager.OpenDialog(11,3);
         }
     }
 }
