@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Bag Manager 类。
@@ -8,6 +11,32 @@ using UnityEngine;
 /// <author>LviatYi</author>
 public class BagManager : MonoBehaviour {
     HeldItem heldItems;
+
+    [Header("Ui")]
+    [SerializeField]
+    GameObject bagUi;
+
+    List<Image> images;
+
+    private void Start() {
+        images = new List<Image>(bagUi.GetComponentsInChildren<Image>());
+    }
+
+    private void Update() {
+        int i = 0;
+        foreach (HeldItem item in Enum.GetValues(typeof(HeldItem))) {
+            if (i >= images.Count) {
+                continue;
+            }
+
+            if (isHaveItem(item)) {
+                images[i].enabled = true;
+            } else {
+                images[i].enabled = false;
+            }
+            i++;
+        }
+    }
 
     /// <summary>
     /// 向背包中增加物品。
