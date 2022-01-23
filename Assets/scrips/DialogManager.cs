@@ -79,14 +79,13 @@ public class DialogManager : MonoBehaviour {
         this.DialogTexture.text = text;
     }
 
-
     /// <summary>
     /// 根据台词章节设置对话框文本。
     /// </summary>
     /// <param name="chapter">章节数</param>
     /// <param name="phrase">语句序号</param>
     public void SetText(int chapter, int phrase) {
-        SetText(this.texts[chapter][phrase]);
+        SetText(this.texts[chapter - 1][phrase - 1]);
     }
 
     /// <summary>
@@ -94,7 +93,7 @@ public class DialogManager : MonoBehaviour {
     /// </summary>
     public void NextPhrase() {
         if (texts[this.chapter].Count > ++phrase) {
-            SetText(texts[this.chapter][this.phrase]);
+            SetText(chapter, phrase);
         } else {
             this.phrase = 0;
             CloseDialog();
@@ -107,7 +106,7 @@ public class DialogManager : MonoBehaviour {
     public void NextChapter() {
         if (texts.Count > ++chapter) {
             this.phrase = 0;
-            SetText(texts[this.chapter][this.phrase]);
+            SetText(chapter, phrase);
         } else {
             CloseDialog();
         }
